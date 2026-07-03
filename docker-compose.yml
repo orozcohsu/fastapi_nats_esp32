@@ -1,0 +1,13 @@
+services:
+  api-service:
+    image: api-server
+    build: .
+    # ⭕ 完美保留您的 8000 port 對外映射！
+    ports:
+      - "8000:8000"
+    container_name: api-service
+    # 🌟 關鍵新增：允許容器內部解析 host.docker.internal
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+
